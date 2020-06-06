@@ -4,28 +4,34 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsapplication.data.NewsReq
+import com.example.newsapplication.data.Articles
 import com.example.newsapplication.ui.base.BaseViewHolder
 
 
-class NewsAdapter(private var mList: List<NewsReq>?) : RecyclerView.Adapter<BaseViewHolder>() {
+class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var context: Context? = null
     private var listener: OnItemClickListener? = null
+    private var mList:List<Articles>?=null
 
     fun setOnItemListener(listener: OnItemClickListener) {
         this.listener = listener
     }
 
+    fun setList(mList:List<Articles>)
+    {
+        this.mList = mList
+    }
+
     companion object {
         private const val VIEW_TYPE_EMPTY = 0
-        private const val VIEW_TYPE_NOTIFICATION_SIMPLE = 1
+        private const val VIEW_TYPE_NORMAL = 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         context = parent.context
         return when (viewType) {
-            VIEW_TYPE_NOTIFICATION_SIMPLE -> {
+            VIEW_TYPE_NORMAL -> {
                 val simpleViewItemBinding: ItemEarningListBinding =
                         ItemEarningListBinding.inflate(
                                 LayoutInflater.from(parent.context), parent, false)
@@ -49,7 +55,7 @@ class NewsAdapter(private var mList: List<NewsReq>?) : RecyclerView.Adapter<Base
     }
 
     override fun getItemViewType(position: Int) = if (mList != null && mList!!.isNotEmpty()) {
-        VIEW_TYPE_NOTIFICATION_SIMPLE
+        VIEW_TYPE_NORMAL
     } else {
         VIEW_TYPE_EMPTY
     }

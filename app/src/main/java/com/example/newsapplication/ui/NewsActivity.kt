@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.example.newsapplication.BR
 import com.example.newsapplication.R
+import com.example.newsapplication.data.Articles
 import com.example.newsapplication.databinding.ActivityNewsBinding
 import com.example.newsapplication.ui.base.BaseActivity
 import com.google.gson.Gson
@@ -38,13 +39,19 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
         mNewsViewModel.navigator = this
         //set listener
         mNewsAdapter.setOnItemListener(this)
+        mNewsAdapter.setList(getNewsList())
+
         toolbar = mActivityNewsBinding.toolbar
         setToolbar(toolbar, getString(R.string.my_news))
 
         //set Adapter
-        mActivityNewsBinding.rvEarningList.adapter = mNewsAdapter
-        //start time
+        mActivityNewsBinding.rvNews.adapter = mNewsAdapter
 
+    }
+
+    fun getNewsList():List<Articles>
+    {
+        return mNewsViewModel.getNews(this).articles
     }
 
     override fun onClickItem(date: Long) {
