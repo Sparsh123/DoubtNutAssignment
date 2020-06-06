@@ -4,13 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tracki.data.model.response.MyEarning
-import com.tracki.databinding.ItemEarningListBinding
-import com.tracki.databinding.ItemMyEarningEmptyBinding
-import com.tracki.ui.base.BaseViewHolder
+import com.example.newsapplication.data.NewsReq
+import com.example.newsapplication.ui.base.BaseViewHolder
 
 
-class NewsAdapter(private var mList: List<MyEarning>?) : RecyclerView.Adapter<BaseViewHolder>() {
+class NewsAdapter(private var mList: List<NewsReq>?) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var context: Context? = null
     private var listener: OnItemClickListener? = null

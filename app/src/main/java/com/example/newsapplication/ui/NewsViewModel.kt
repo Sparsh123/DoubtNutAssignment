@@ -3,49 +3,11 @@ package com.example.newsapplication.ui
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import com.example.newsapplication.ui.base.BaseViewModel
-import com.tracki.TrackiApplication
-import com.tracki.data.DataManager
-import com.tracki.data.model.request.MyEarningRequest
-import com.tracki.data.network.APIError
-import com.tracki.data.network.ApiCallback
-import com.tracki.data.network.HttpManager
-import com.tracki.ui.base.BaseViewModel
-import com.tracki.utils.ApiType
-import com.tracki.utils.AppConstants
-import com.tracki.utils.DateTimeUtil
-import com.tracki.utils.rx.SchedulerProvider
+
 
 
 class NewsViewModel :
-        BaseViewModel<NewsNavigator>(dataManager, schedulerProvider) {
-
-    val isTodayEarning = ObservableBoolean(true)
-    val totalRides = ObservableField<String>("0")
-    val totalEarnings = ObservableField<String>(AppConstants.INR + " 0")
-    val dateRange = ObservableField<String>("Select Date Range")
-
-    fun setDateRange(string: String) {
-        dateRange.set(string)
-    }
-
-    fun selectDateRange() {
-        navigator.selectDateRange()
-    }
-
-    fun viewDetails() {
-        navigator.viewDetails()
-    }
-
-    fun search() {
-        navigator.search()
-    }
-
-    private lateinit var httpManager: HttpManager
-
-    fun getMyEarnings(httpManager: HttpManager, earningRequest: MyEarningRequest) {
-        this.httpManager = httpManager
-        GetMyEarnings(earningRequest).hitApi()
-    }
+        BaseViewModel<NewsNavigator>() {
 
     inner class GetMyEarnings(private val earningRequest: MyEarningRequest) : ApiCallback {
 

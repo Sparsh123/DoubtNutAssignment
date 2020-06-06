@@ -9,11 +9,11 @@ import java.util.*
 class NewsActivityModule {
 
     @Provides
-    fun provideMyEarningsViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider) =
-            NewsViewModel(dataManager, schedulerProvider)
+    fun provideMyEarningsViewModel() =
+            NewsViewModel()
 
     @Provides
-    fun provideMyEarningsAdapter(): NewsAdapter {
+    fun provideNewsAdapter(): NewsAdapter {
         return NewsAdapter(ArrayList())
     }
 }

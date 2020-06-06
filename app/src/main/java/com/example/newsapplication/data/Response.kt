@@ -1,23 +1,37 @@
 package com.example.newsapplication.data
 
 
-import java.io.Serializable
-
-class AppliedByHistory {
-
-    var email: String? = null
-    var firstName: String? = null
-    var lastName: String? = null
-    var mobile: String? = null
-    var userId: String? = null
-}
 
 
+data class NewsReq(
+    val status : String,
+    val totalResults : Int,
+    val articles : List<Articles>
+
+)
+
+data class Articles (
+
+    val source : Source,
+    val author : String,
+    val title : String,
+    val description : String,
+    val url : String,
+    val urlToImage : String,
+    val publishedAt : String,
+    val content : String
+)
 
 
-enum class LeaveStatus {
-    ALL, PENDING, APPROVED, REJECTED, CANCELLED, PRESENT, ABSENT, DAY_OFF, HOLIDAY, ON_LEAVE
-}
+data class Source (
+
+    val id : String,
+    val name : String
+)
+
+
+
+
 
 
 
