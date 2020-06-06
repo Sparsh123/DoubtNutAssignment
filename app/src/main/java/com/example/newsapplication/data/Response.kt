@@ -3,7 +3,7 @@ package com.example.newsapplication.data
 
 
 
-data class NewsReq(
+data class NewsResponse(
     val status : String,
     val totalResults : Int,
     val articles : List<Articles>
