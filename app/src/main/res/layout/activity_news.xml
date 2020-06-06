@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.newsapplication.ui.MyEarningsViewModel" />
+            type="com.example.newsapplication.ui.NewsViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -47,9 +47,7 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:layout_marginEnd="@dimen/dimen_10">
 
-
-
-                    <androidx.recyclerview.widget.RecyclerView
+                 <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvEarningList"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -59,7 +57,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf=""
+                        app:layout_constraintTop_toBottomOf="parent"
                         tools:listitem="@layout/item_earning_list" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

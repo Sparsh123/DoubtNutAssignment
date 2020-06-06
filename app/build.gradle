@@ -30,6 +30,16 @@ android {
 }
 
 dependencies {
+    kapt "com.android.databinding:compiler:$compiler_version"
+}
+
+kapt {
+    generateStubs = true
+}
+
+
+
+dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

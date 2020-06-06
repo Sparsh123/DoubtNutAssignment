@@ -1,4 +1,4 @@
-package com.tracki.data.model.response
+package com.example.newsapplication.data
 
 
 import java.io.Serializable

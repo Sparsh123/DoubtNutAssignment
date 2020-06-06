@@ -1,4 +1,4 @@
-package com.tracki.data.model.request
+package com.example.newsapplication.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

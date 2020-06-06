@@ -1,4 +1,4 @@
-package com.tracki.ui.base
+package com.example.newsapplication.ui.base;
 
 import androidx.annotation.NonNull
 

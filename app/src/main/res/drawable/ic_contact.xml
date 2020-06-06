@@ -1,0 +1,15 @@
+<vector android:height="24dp" android:viewportHeight="20"
+    android:viewportWidth="20" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="0.185" android:fillColor="#000"
+        android:fillType="nonZero"
+        android:pathData="M19.106,0L4.894,0C4.4,0 4,0.4 4,0.894v17.292c0,0.494 0.4,0.895 0.894,0.895h14.212c0.494,0 0.894,-0.4 0.894,-0.895L20,0.894C20,0.4 19.6,0 19.106,0zM12,5.263a2.23,2.23 0,1 1,0 4.46,2.23 2.23,0 0,1 0,-4.46zM7.951,13.818a4.049,4.049 0,0 1,8.098 0L7.95,13.818z" android:strokeAlpha="0.185"/>
+    <path android:fillAlpha="0.185" android:fillColor="#000"
+        android:fillType="nonZero"
+        android:pathData="M1.5,2L5.5,2A1.5,1.5 0,0 1,7 3.5L7,3.5A1.5,1.5 0,0 1,5.5 5L1.5,5A1.5,1.5 0,0 1,0 3.5L0,3.5A1.5,1.5 0,0 1,1.5 2z" android:strokeAlpha="0.185"/>
+    <path android:fillAlpha="0.185" android:fillColor="#000"
+        android:fillType="nonZero"
+        android:pathData="M1.5,8L5.5,8A1.5,1.5 0,0 1,7 9.5L7,9.5A1.5,1.5 0,0 1,5.5 11L1.5,11A1.5,1.5 0,0 1,0 9.5L0,9.5A1.5,1.5 0,0 1,1.5 8z" android:strokeAlpha="0.185"/>
+    <path android:fillAlpha="0.185" android:fillColor="#000"
+        android:fillType="nonZero"
+        android:pathData="M1.5,14L5.5,14A1.5,1.5 0,0 1,7 15.5L7,15.5A1.5,1.5 0,0 1,5.5 17L1.5,17A1.5,1.5 0,0 1,0 15.5L0,15.5A1.5,1.5 0,0 1,1.5 14z" android:strokeAlpha="0.185"/>
+</vector>

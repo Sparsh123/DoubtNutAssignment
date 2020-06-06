@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.tracki.ui.earnings.MyEarningsItemViewModel" />
+            type="com.tracki.ui.earnings.NewsItemViewModel" />
     </data>
 
     <LinearLayout
