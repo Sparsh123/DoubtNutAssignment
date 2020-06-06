@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.tracki.ui.earnings.MyEarningsViewModel" />
+            type="com.example.newsapplication.ui.MyEarningsViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

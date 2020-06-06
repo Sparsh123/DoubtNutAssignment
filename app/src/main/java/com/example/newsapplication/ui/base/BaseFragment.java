@@ -19,12 +19,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
-
-import com.tracki.data.network.ApiCallback;
-import com.tracki.ui.login.LoginActivity;
-import com.tracki.utils.AnalyticsHelper;
-import com.tracki.utils.AppConstants;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +30,7 @@ import dagger.android.support.AndroidSupportInjection;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
 
-    @Inject
-    public AnalyticsHelper analyticsHelper;
+
     private BaseActivity mActivity;
     private View mRootView;
     private T mViewDataBinding;
@@ -120,67 +113,13 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         }
     }
 
-    public boolean isNetworkConnected() {
-        return mActivity != null && mActivity.isNetworkConnected();
-    }
-
-    public void openActivityOnTokenExpire() {
-        if (mActivity != null) {
-            Intent intent = LoginActivity.newIntent(getBaseActivity());
-            intent.putExtra(AppConstants.Extra.EXTRA_LOGOUT, true);
-            mActivity.openActivityOnTokenExpire(intent);
-        }
-    }
-
     private void performDependencyInjection() {
         AndroidSupportInjection.inject(this);
     }
 
-    public void showTimeOutMessage(@NonNull ApiCallback callBack) {
-        getBaseActivity().showTimeOutMessage(callBack);
-    }
-
-    public void showLoading() {
-        hideLoading();
-        if (mActivity != null) {
-            mActivity.showLoading();
-        }
-    }
-
-    public void hideLoading() {
-        if (mActivity != null) {
-            mActivity.hideLoading();
-        }
-    }
-
-    protected void showDialogOK(String message, DialogInterface.OnClickListener onClickListener) {
-        new AlertDialog.Builder(getBaseActivity())
-                .setMessage(message)
-                .setPositiveButton("OK", onClickListener)
-                .setNegativeButton("Cancel", onClickListener)
-                .create()
-                .show();
-    }
 
 
-    @TargetApi(Build.VERSION_CODES.M)
-    public boolean hasPermission(String[] permissions) {
-        int result;
-        List<String> listPermissionsNeeded = new ArrayList<>();
-        for (String p : permissions) {
-            result = ActivityCompat.checkSelfPermission(getContext(), p);
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                listPermissionsNeeded.add(p);
-            }
-        }
-        if (!listPermissionsNeeded.isEmpty()) {
-            String[] permi = new String[listPermissionsNeeded.size()];
-            permi = listPermissionsNeeded.toArray(permi);
-            requestPermissions(permi, AppConstants.PERMISSIONS_REQUEST_CODE_MULTIPLE);
-            return false;
-        }
-        return true;
-    }
+
 
     public interface Callback {
 
