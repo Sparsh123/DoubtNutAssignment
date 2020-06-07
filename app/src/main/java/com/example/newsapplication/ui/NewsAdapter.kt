@@ -1,7 +1,6 @@
 package com.example.newsapplication.ui
 
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +8,6 @@ import com.example.newsapplication.data.Articles
 import com.example.newsapplication.databinding.ItemNewsEmptyBinding
 import com.example.newsapplication.databinding.ItemNewsListBinding
 import com.example.newsapplication.ui.base.BaseViewHolder
-import java.net.URL
 
 
 class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
@@ -86,9 +84,9 @@ class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
             simpleViewModel = NewsItemViewModel(lists, this)
             mBinding.viewModel = simpleViewModel
             pos = position
-            val url = URL(mList!![position].url)
-            val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-            mBinding.ivNews.setImageBitmap(bmp)
+//            val url = URL(mList!![position].url)
+//            val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+//            mBinding.ivNews.setImageBitmap(bmp)
             mBinding.executePendingBindings()
         }
 

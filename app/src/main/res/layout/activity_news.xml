@@ -18,7 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -29,7 +35,7 @@
                 app:contentInsetStart="0dp"
                 app:contentInsetStartWithNavigation="0dp"
                 app:titleTextColor="@color/white"
-                tools:title="@string/my_earnings" />
+                 />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -40,27 +46,29 @@
             android:fillViewport="true"
             >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:layout_marginEnd="@dimen/dimen_10">
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="@dimen/dimen_10"-->
+<!--                android:layout_marginTop="@dimen/dimen_10"-->
+<!--                android:layout_marginEnd="@dimen/dimen_10">-->
+
+
 
                  <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvNews"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_margin="@dimen/dimen_10"
+                        android:layout_margin="@dimen/dimen_20"
                         android:scrollbars="none"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/appBar"
                          />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
         </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

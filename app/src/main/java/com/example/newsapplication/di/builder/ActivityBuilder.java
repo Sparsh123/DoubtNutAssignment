@@ -14,6 +14,7 @@ public abstract class ActivityBuilder {
        @ContributesAndroidInjector(modules = NewsActivityModule.class)
     abstract NewsActivity bindMainActivity();
 
+
        //    @ContributesAndroidInjector(modules = {
 //            LeaveActivityModule.class,
 //            ApplyLeaveFragmentProvider.class,
