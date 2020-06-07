@@ -3,6 +3,7 @@ package com.example.newsapplication.ui
 import android.content.Context
 import com.example.newsapplication.data.NewsResponse
 import com.example.newsapplication.ui.base.BaseViewModel
+import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -74,7 +75,7 @@ interface ApiService {
 
     // Fetch all news
     @GET("v2/top-headlines")
-    fun fetchAllNews(@Query("country") country:String, @Query("apiKey") apiKey:String): Call<NewsResponse>?
+    fun fetchAllNews(@Query("country") country:String, @Query("apiKey") apiKey:String): Single<NewsResponse>?
 
 
 }

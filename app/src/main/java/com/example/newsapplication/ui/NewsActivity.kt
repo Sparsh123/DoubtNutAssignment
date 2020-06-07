@@ -12,7 +12,11 @@ import com.example.newsapplication.data.Articles
 import com.example.newsapplication.data.NewsResponse
 import com.example.newsapplication.databinding.ActivityNewsBinding
 import com.example.newsapplication.ui.base.BaseActivity
+import io.reactivex.SingleObserver
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -64,30 +68,32 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
 
     fun getNews(context:Context)
     {
-//        val mDisposable = CompositeDisposable()
+        val mDisposable = CompositeDisposable()
 
-//        val apiService =
-//            ApiClient.getClient(context =context)?.create(ApiService::class.java)
+        val apiService =
+            ApiClient.getClient(context =context)?.create(ApiService::class.java)
 
-//        // Fetching all news
-//            apiService?.fetchAllNews()!!
-//            .subscribeOn(AndroidSchedulers.mainThread())
-//            .observeOn(Schedulers.io())
-//            .subscribe(object : SingleObserver<NewsResponse> {
-//
-//                override fun onSubscribe(d: Disposable) {
-//                    Log.d(TAG, "onSubscribe")
-//                   // disposable = d
-//                }
-//
-//                override fun onSuccess(newsResponse: NewsResponse) { // Received all news
-//                    newsResp = newsResponse
-//                }
-//
-//                override fun onError(e: Throwable) {
-//                    Log.d(TAG, "onError: " + e.message)
-//                }
-//            })
+        // Fetching all news
+            apiService?.fetchAllNews("us", "3952dfc43da040d7a08cd5e8400c5d11")!!
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<NewsResponse> {
+
+                override fun onSubscribe(d: Disposable) {
+                    Log.d(TAG, "onSubscribe")
+                   // disposable = d
+                }
+
+                override fun onSuccess(newsResponse: NewsResponse) { // Received all news
+                    newsResp = newsResponse
+                    mNewsAdapter.setList(newsResp!!.articles!!)
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.d(TAG, "onError: " + e.message)
+                }
+            })
 
 
 //        mService!!.fetchAllNews("us", "3952dfc43da040d7a08cd5e8400c5d11")!!.enqueue(object : Callback<NewsResponse> {
@@ -117,32 +123,28 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-        val apiService = ApiClient.getClient(context =context)?.create(ApiService::class.java)
+      //  val apiService = ApiClient.getClient(context =context)?.create(ApiService::class.java)
 
 //        val apiService:ApiService  = retrofit.create(ApiService::class.java)
 
-        val call:Call<NewsResponse>  = apiService!!.fetchAllNews("us","3952dfc43da040d7a08cd5e8400c5d11")!!;
-
-        call.enqueue(object : Callback<NewsResponse> {
-
-            override fun onResponse(call:Call<NewsResponse>, response:Response<NewsResponse>) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(context, "Not successful!", Toast.LENGTH_LONG).show()
-                }
-                newsResp = response.body()
-                mNewsAdapter.setList(newsResp!!.articles!!)
-
-
-
-
-
-            }
-
-            override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show()
-
-            }
-    })
+//        val call:Call<NewsResponse>  = apiService!!.fetchAllNews("us","3952dfc43da040d7a08cd5e8400c5d11")!!;
+//
+//        call.enqueue(object : Callback<NewsResponse> {
+//
+//            override fun onResponse(call:Call<NewsResponse>, response:Response<NewsResponse>) {
+//                if (!response.isSuccessful()) {
+//                    Toast.makeText(context, "Not successful!", Toast.LENGTH_LONG).show()
+//                }
+//                newsResp = response.body()
+//                mNewsAdapter.setList(newsResp!!.articles!!)
+//
+//
+//            }
+//            override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
+//                Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show()
+//
+//            }
+//    })
     }
 
 
