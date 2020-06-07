@@ -130,7 +130,7 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
                     Toast.makeText(context, "Not successful!", Toast.LENGTH_LONG).show()
                 }
                 newsResp = response.body()
-                mNewsAdapter.setList(newsResp!!.articles)
+                mNewsAdapter.setList(newsResp!!.articles!!)
 
 
 

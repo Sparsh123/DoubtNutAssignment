@@ -2,6 +2,7 @@
     <string name="app_name">NewsApp</string>
     <string name="search_hint">Search</string>
     <string name="my_news">News</string>
+    <string name="title"> Trending News! </string>
 
 
 </resources>

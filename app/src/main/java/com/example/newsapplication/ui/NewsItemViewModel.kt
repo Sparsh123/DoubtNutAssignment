@@ -13,20 +13,23 @@ class NewsItemViewModel(val articles: Articles, val listener: NewsItemListener) 
 
 
     init {
-       if (articles.source.name!=null)
-           source.set("Source: "+ articles.source.name)
+        if (articles.source != null && articles.source.name != null)
+            source.set("Source: " + articles.source.name)
 
-        if (articles.author!=null)
+        if (articles.author != null)
             author.set("Author: " + articles.author)
 
-        if (articles.title!=null)
+        if (articles.title != null)
             title.set(articles.title)
 
-        if (articles.description!=null)
+        if (articles.description != null)
             description.set(articles.description)
 
-        if (articles.publishedAt!=null)
-            publishedAt.set("Published at: " + articles.publishedAt)
+        if (articles.publishedAt != null) {
+            var words:List<String>?=null
+            words = articles.publishedAt.split("T")
+            publishedAt.set("Published at: " + words.get(0) + ", " + words.get(1) )
+        }
     }
 
     fun onItemClick() {

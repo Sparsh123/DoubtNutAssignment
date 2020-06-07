@@ -17,13 +17,13 @@
         android:onClick="@{()->viewModel.onItemClick()}"
 
         android:orientation="horizontal">
-<!--    <ImageView-->
-<!--        android:id="@+id/ivNews"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="@dimen/dimen_100"-->
-<!--        android:layout_margin="@dimen/dimen_10"-->
-<!--        android:gravity="start"-->
-<!--        />-->
+    <ImageView
+        android:id="@+id/ivNews"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/dimen_100"
+        android:layout_margin="@dimen/dimen_10"
+        android:gravity="start"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,6 +79,7 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:gravity="center"
+                android:maxLines="5"
                 android:text="@{viewModel.description}"
                 android:textSize="@dimen/text_size_14"
                  />

@@ -39,7 +39,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_25"
+                android:textStyle="bold"
+                android:text="@string/title"
+                />
+
+
+            <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bg_recycler_view"
@@ -52,7 +63,6 @@
 <!--                android:layout_marginStart="@dimen/dimen_10"-->
 <!--                android:layout_marginTop="@dimen/dimen_10"-->
 <!--                android:layout_marginEnd="@dimen/dimen_10">-->
-
 
 
                  <androidx.recyclerview.widget.RecyclerView
