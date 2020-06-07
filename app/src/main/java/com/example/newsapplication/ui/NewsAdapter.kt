@@ -1,11 +1,15 @@
 package com.example.newsapplication.ui
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapplication.data.Articles
+import com.example.newsapplication.databinding.ItemNewsEmptyBinding
+import com.example.newsapplication.databinding.ItemNewsListBinding
 import com.example.newsapplication.ui.base.BaseViewHolder
+import java.net.URL
 
 
 class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
@@ -21,6 +25,7 @@ class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     fun setList(mList:List<Articles>)
     {
         this.mList = mList
+        notifyDataSetChanged()
     }
 
     companion object {
@@ -32,14 +37,14 @@ class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         context = parent.context
         return when (viewType) {
             VIEW_TYPE_NORMAL -> {
-                val simpleViewItemBinding: ItemEarningListBinding =
-                        ItemEarningListBinding.inflate(
+                val simpleViewItemBinding: ItemNewsListBinding =
+                    ItemNewsListBinding.inflate(
                                 LayoutInflater.from(parent.context), parent, false)
                 SimpleViewHolder(simpleViewItemBinding)
             }
             else -> {
-                val emptyViewBinding: ItemMyEarningEmptyBinding =
-                        ItemMyEarningEmptyBinding.inflate(
+                val emptyViewBinding: ItemNewsEmptyBinding =
+                    ItemNewsEmptyBinding.inflate(
                                 LayoutInflater.from(parent.context), parent, false)
                 EmptyViewHolder(emptyViewBinding)
             }
@@ -62,37 +67,37 @@ class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) = holder.onBind(position)
 
-    fun addItems(list: List<MyEarning>?) {
-        mList = list
-        notifyDataSetChanged()
-    }
+//    fun addItems(list: List<Articles>?) {
+//        mList = list
+//        notifyDataSetChanged()
+//    }
 
     interface OnItemClickListener {
-        fun onClickItem(date: Long)
+        fun onClickItem(pos: Int)
     }
 
-    inner class SimpleViewHolder(private val mBinding: ItemEarningListBinding) :
-            BaseViewHolder(mBinding.root), NewsItemViewModel.MyEarningsItemListener {
+    inner class SimpleViewHolder(private val mBinding: ItemNewsListBinding) :
+            BaseViewHolder(mBinding.root), NewsItemViewModel.NewsItemListener {
 
         private lateinit var simpleViewModel: NewsItemViewModel
+        private var pos:Int = 0
         override fun onBind(position: Int) {
             val lists = mList!![position]
             simpleViewModel = NewsItemViewModel(lists, this)
             mBinding.viewModel = simpleViewModel
-
-            // Immediate Binding
-            // When a variable or observable changes, the binding will be scheduled to change before
-            // the next frame. There are times, however, when binding must be executed immediately.
-            // To force execution, use the executePendingBindings() method.
+            pos = position
+            val url = URL(mList!![position].url)
+            val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+            mBinding.ivNews.setImageBitmap(bmp)
             mBinding.executePendingBindings()
         }
 
-        override fun onClickItem(date: Long) {
-            listener?.onClickItem(date)
+        override fun onClickItem() {
+            listener?.onClickItem(pos)
         }
     }
 
-    inner class EmptyViewHolder(private val mBinding: ItemMyEarningEmptyBinding) :
+    inner class EmptyViewHolder(private val mBinding: ItemNewsEmptyBinding) :
             BaseViewHolder(mBinding.root) {
 
         override fun onBind(position: Int) {

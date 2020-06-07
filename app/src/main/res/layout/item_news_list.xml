@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <ImageView
+        android:id="@+id/ivNews"
         android:layout_width="100dp"
         android:layout_height="@dimen/dimen_100"
         android:layout_margin="@dimen/dimen_10"
@@ -38,7 +39,7 @@
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:text="@{viewModel.date}"
+            android:text="@{viewModel.title}"
             android:textSize="@dimen/text_size_16"
             android:textStyle="bold"
             tools:text="News Title" />
@@ -57,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:gravity="end"
                 android:textSize="@dimen/text_size_8"
+                android:text="@{viewModel.publishedAt}"
                 tools:text="Published At: " />
 
         </LinearLayout>
@@ -74,9 +76,9 @@
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
                 android:gravity="center"
-                android:text="@{viewModel.date}"
+                android:text="@{viewModel.description}"
                 android:textSize="@dimen/text_size_14"
-                tools:text="05/06/2019" />
+                 />
 
         </LinearLayout>
 
@@ -84,13 +86,15 @@
                 style="@style/TextViewStyle"
                 android:textSize="@dimen/text_size_8"
                 android:padding="@dimen/dimen_5"
-                tools:text="INR 1234" />
+                android:text="@{viewModel.source}"
+                />
 
         <TextView
             style="@style/TextViewStyle"
             android:textSize="@dimen/text_size_8"
             android:padding="@dimen/dimen_5"
-            tools:text="INR 1234" />
+            android:text="@{viewModel.author}"
+             />
 
 
 

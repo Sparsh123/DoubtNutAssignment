@@ -54,11 +54,11 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
         return mNewsViewModel.getNews(this).articles
     }
 
-    override fun onClickItem(date: Long) {
-        openNewsFragment();
+    override fun onClickItem(pos:Int) {
+        openNewsFragment(pos);
     }
 
-    fun openNewsFragment()
+    fun openNewsFragment(pos:Int)
     {
 
     }

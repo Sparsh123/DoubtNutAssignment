@@ -1,31 +1,39 @@
 package com.example.newsapplication.ui
 
 import androidx.databinding.ObservableField
+import com.example.newsapplication.data.Articles
 
 
+class NewsItemViewModel(val articles: Articles, val listener: NewsItemListener) {
+    val source = ObservableField<String>("")
+    val author = ObservableField<String>("")
+    val title = ObservableField<String>("")
+    val description = ObservableField<String>("")
+    val publishedAt = ObservableField<String>("")
 
-class NewsItemViewModel(val earning: MyEarning, val listener: MyEarningsItemListener) {
-    val totalRides = ObservableField<String>("0 ${AppConstants.RIDES}")
-    val totalEarning = ObservableField<String>("0")
-    val date = ObservableField<String>("")
 
     init {
-        if (earning.totalRide > 0) {
-            if (earning.totalRide > 1) {
-                totalRides.set("${earning.totalRide} ${AppConstants.RIDES}")
-            } else {
-                totalRides.set("${earning.totalRide} ${AppConstants.RIDE}")
-            }
-        }
-        totalEarning.set("${AppConstants.INR} ${earning.totalAmount}")
-        date.set(DateTimeUtil.getParsedDate(earning.date, DATE_FORMAT_2))
+       if (articles.source.name!=null)
+           source.set("Source: "+ articles.source.name)
+
+        if (articles.author!=null)
+            author.set("Author: " + articles.author)
+
+        if (articles.title!=null)
+            title.set(articles.title)
+
+        if (articles.description!=null)
+            description.set(articles.description)
+
+        if (articles.publishedAt!=null)
+            publishedAt.set("Published at: " + articles.publishedAt)
     }
 
     fun onRideClick() {
-        listener.onClickItem(earning.date)
+        listener.onClickItem()
     }
 
-    interface MyEarningsItemListener {
-        fun onClickItem(date: Long)
+    interface NewsItemListener {
+        fun onClickItem()
     }
 }
