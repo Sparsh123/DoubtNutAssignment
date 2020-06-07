@@ -1,43 +1,25 @@
 package com.example.newsapplication.ui.base;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
 import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-
-
 import com.example.newsapplication.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
 import dagger.android.AndroidInjection;
-
-
 
 public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity
         implements BaseFragment.Callback {
@@ -47,8 +29,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     private ProgressDialog mProgressDialog;
     private T mViewDataBinding;
     private V mViewModel;
-
-
     /**
      * Override for set binding variable
      *
@@ -72,24 +52,18 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
 
     @Override
     public void onFragmentAttached() {
-
     }
 
     @Override
     public void onFragmentDetached(String tag) {
-
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         performDependencyInjection();
-//        /*TODO test here for navigation bar color and navigation button color*/
-
         super.onCreate(savedInstanceState);
         performDataBinding();
     }
-
-
 
     public void performDependencyInjection() {
         AndroidInjection.inject(this);
@@ -122,15 +96,12 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         }
     }
 
-
-
     @TargetApi(Build.VERSION_CODES.M)
     public void requestPermissionsSafely(String[] permissions, int requestCode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
     }
-
 
     protected void setFlags(Intent intent) {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -170,10 +141,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         super.onBackPressed();
         hideLoading();
     }
-
-
-
-
 
     public void showDialogOK(String message, DialogInterface.OnClickListener onClickListener) {
         new AlertDialog.Builder(this)

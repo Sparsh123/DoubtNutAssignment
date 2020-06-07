@@ -2,8 +2,6 @@ package com.example.newsapplication.ui
 
 import dagger.Module
 import dagger.Provides
-import java.util.*
-
 
 @Module
 class NewsActivityModule {

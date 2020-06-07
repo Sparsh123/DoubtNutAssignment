@@ -3,14 +3,12 @@ package com.example.newsapplication.ui
 import androidx.databinding.ObservableField
 import com.example.newsapplication.data.Articles
 
-
 class NewsItemViewModel(val articles: Articles, val listener: NewsItemListener) {
     val source = ObservableField<String>("")
     val author = ObservableField<String>("")
     val title = ObservableField<String>("")
     val description = ObservableField<String>("")
     val publishedAt = ObservableField<String>("")
-
 
     init {
         if (articles.source != null && articles.source.name != null)

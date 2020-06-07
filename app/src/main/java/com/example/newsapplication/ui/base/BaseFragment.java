@@ -1,35 +1,19 @@
 package com.example.newsapplication.ui.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
 import dagger.android.support.AndroidSupportInjection;
 
-
-
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
-
 
     private BaseActivity mActivity;
     private View mRootView;
@@ -116,10 +100,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     private void performDependencyInjection() {
         AndroidSupportInjection.inject(this);
     }
-
-
-
-
 
     public interface Callback {
 

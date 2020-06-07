@@ -10,10 +10,6 @@ import com.example.newsapplication.databinding.ItemNewsEmptyBinding
 import com.example.newsapplication.databinding.ItemNewsListBinding
 import com.example.newsapplication.ui.base.BaseViewHolder
 import com.squareup.picasso.Picasso
-import java.io.File
-import java.net.URI
-import java.net.URL
-
 
 class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
@@ -69,11 +65,6 @@ class NewsAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) = holder.onBind(position)
-
-//    fun addItems(list: List<Articles>?) {
-//        mList = list
-//        notifyDataSetChanged()
-//    }
 
     interface OnItemClickListener {
         fun onClickItem(pos: Int)
