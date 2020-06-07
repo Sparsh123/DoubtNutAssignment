@@ -29,7 +29,7 @@ class NewsItemViewModel(val articles: Articles, val listener: NewsItemListener) 
             publishedAt.set("Published at: " + articles.publishedAt)
     }
 
-    fun onRideClick() {
+    fun onItemClick() {
         listener.onClickItem()
     }
 
