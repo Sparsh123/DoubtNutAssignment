@@ -28,7 +28,8 @@ class NewsItemViewModel(val articles: Articles, val listener: NewsItemListener) 
         if (articles.publishedAt != null) {
             var words:List<String>?=null
             words = articles.publishedAt.split("T")
-            publishedAt.set("Published at: " + words.get(0) + ", " + words.get(1) )
+            publishedAt.set("Published at: " + words.get(0) + ", " + words.get(1).substring(0,
+                words.get(1).length-4 ) )
         }
     }
 

@@ -20,10 +20,11 @@
 
     <ImageView
         android:id="@+id/ivNews"
-        android:layout_width="80dp"
-        android:layout_height="@dimen/dimen_100"
+        android:layout_width="70dp"
+        android:layout_height="@dimen/dimen_60"
         android:gravity="start"
-        android:layout_marginTop="@dimen/dimen_7"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="@dimen/dimen_30"
         />
 
     <LinearLayout
