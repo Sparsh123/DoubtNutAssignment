@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.newsapplication.ui.NewsItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="@dimen/dimen_100"
+        android:layout_margin="@dimen/dimen_10"
+        android:gravity="start"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:padding="@dimen/dimen_5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.date}"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold"
+            tools:text="News Title" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="@dimen/dimen_5"
+            android:orientation="horizontal">
+
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:gravity="end"
+                android:textSize="@dimen/text_size_8"
+                tools:text="Published At: " />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dimen_5"
+            android:orientation="horizontal">
+
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.date}"
+                android:textSize="@dimen/text_size_14"
+                tools:text="05/06/2019" />
+
+        </LinearLayout>
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:textSize="@dimen/text_size_8"
+                android:padding="@dimen/dimen_5"
+                tools:text="INR 1234" />
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:textSize="@dimen/text_size_8"
+            android:padding="@dimen/dimen_5"
+            tools:text="INR 1234" />
+
+
+
+    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1"
+            android:background="@color/semi_gray_5" />
+    </LinearLayout>
+</layout>
+
