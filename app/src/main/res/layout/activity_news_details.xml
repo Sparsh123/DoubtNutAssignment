@@ -39,15 +39,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-            <TextView
-                style="@style/TextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="@dimen/text_size_25"
-                android:textStyle="bold"
-                android:text="@string/title"
-                />
 
 
             <androidx.core.widget.NestedScrollView

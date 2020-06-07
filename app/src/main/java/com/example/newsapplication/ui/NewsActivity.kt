@@ -4,24 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.newsapplication.BR
 import com.example.newsapplication.R
-import com.example.newsapplication.data.Articles
 import com.example.newsapplication.data.NewsResponse
 import com.example.newsapplication.databinding.ActivityNewsBinding
 import com.example.newsapplication.ui.base.BaseActivity
+import com.tracki.ui.rides.NewsDetailsActivity
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 
@@ -68,8 +63,6 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
 
     fun getNews(context:Context)
     {
-        val mDisposable = CompositeDisposable()
-
         val apiService =
             ApiClient.getClient(context =context)?.create(ApiService::class.java)
 
@@ -84,7 +77,7 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
                    // disposable = d
                 }
 
-                override fun onSuccess(newsResponse: NewsResponse) { // Received all news
+                override fun onSuccess(newsResponse: NewsResponse) { // Receive all news
                     newsResp = newsResponse
                     mNewsAdapter.setList(newsResp!!.articles!!)
 
@@ -119,9 +112,9 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
 //        })
 
 
-        val retrofit: Retrofit =  Retrofit.Builder().baseUrl("https://www.newsapi.org/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
+//        val retrofit: Retrofit =  Retrofit.Builder().baseUrl("https://www.newsapi.org/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build();
 
       //  val apiService = ApiClient.getClient(context =context)?.create(ApiService::class.java)
 
@@ -151,12 +144,17 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(),
 
 
     override fun onClickItem(pos:Int) {
-        openNewsFragment(pos);
+        openNewsActivity(pos);
     }
 
-    fun openNewsFragment(pos:Int)
+    fun openNewsActivity(pos:Int)
     {
-
+        val intent = NewsDetailsActivity.newIntent(this)
+        val bundle = Bundle()
+        bundle.putSerializable("NewsResponse", newsResp)
+        bundle.putString("Pos", pos.toString())
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
 
